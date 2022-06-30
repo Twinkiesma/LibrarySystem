@@ -10,15 +10,16 @@ IntelliJ IDEA 2021.2.3 + Jdk1.8.0 + Tomcat 9.0.43 + Maven 3.8.3 + MySql 5.7
 ### 2、主要源码(Library.sql)
 详细可在Library.sql文件中查看
 ### 3、连接成功后的数据库表
-管理员表(admin)
-![3](https://github.com/Twinkiesma/LibrarySystem/blob/master/picture/3.jpg)
-读者表(reader)
-![4](https://github.com/Twinkiesma/LibrarySystem/blob/master/picture/4.jpg)
-读者信息表(reader_info)
-![5](https://github.com/Twinkiesma/LibrarySystem/blob/master/picture/5.jpg)
+管理员表(admin)  
+![3](https://github.com/Twinkiesma/LibrarySystem/blob/master/picture/3.jpg)  
+读者表(reader)  
+![4](https://github.com/Twinkiesma/LibrarySystem/blob/master/picture/4.jpg)  
+读者信息表(reader_info)  
+![5](https://github.com/Twinkiesma/LibrarySystem/blob/master/picture/5.jpg)  
 ## 二、项目创建
 ### 1、首先创建一个maven项目,项目结构如下：
 ![6](https://github.com/Twinkiesma/LibrarySystem/blob/master/picture/6.jpg)
+
 根据SpringMVC三层架构，我们可以将项目分为Model（模型）、View（视图）、Controller（控制器）这三大部分，在此三大模型之上可以再细分为以下四层：  
  * 实体层(Bean)：如果想要对数据库进行一些操作，就要先写实体层。
  * 持久层(Dao)：存放对数据库底层进行操作的类。与数据库进行交互,封装了增删改查操作。
@@ -62,7 +63,7 @@ Bean的装配方式：
  * 只指定name属性，就只会按照名称进行装配，找不到则抛出异常。
  * 只指定type属性，按照类型找到唯一bean进行装配，找不到或找到多个，都抛出异常。
 #### 映射文件(xml)
-详细可在MyBatis文件中查看
+详细可在MyBatis文件中查看  
 ![9](https://github.com/Twinkiesma/LibrarySystem/blob/master/picture/9.jpg)
  * resultType：指定sql输出结果类型，共四种：Map、List、基本数据类型、pojo类型。
  * parameterType：传入sql参数类型，共两种：基本数据类型(int,string,long,Date)、复杂数据类型(类,Map)。
@@ -73,32 +74,37 @@ MyBatis获取参数值的两种方式：#{ }，${ }字符串拼接。
  * SQL注入：攻击者在事先定义好的 sql 语句中添加额外的sql语句欺骗数据库服务器，以此执行计划外的命令或访问未被授权的数据。
 
 ### 3、创建各种功能文件(Controller)
-详细可在controller文件中查看
-![10](https://github.com/Twinkiesma/LibrarySystem/blob/master/picture/10.jpg)
-![11](https://github.com/Twinkiesma/LibrarySystem/blob/master/picture/11.jpg)
+详细可在controller文件中查看  
+![10](https://github.com/Twinkiesma/LibrarySystem/blob/master/picture/10.jpg)  
+![11](https://github.com/Twinkiesma/LibrarySystem/blob/master/picture/11.jpg)  
 值得注意的是在“管理员删除读者”功能中有一行“不可使用”的备注，同样是传递参数，在“跳转读者查看个人信息页面”功能中使用的方法为何不同？这里就要提到getParameter()与getAttribute()区别了。
  * getParameter()：用于获取客户端通过get或post方式（表单提交）传递的参数，代表Http请求数据，只能返回字符串。
  * getAttribute()：用于获取请求作用域中的数据，只能获取到服务器通过setAttribute()设置的数据，返回任意类型。
 ## 四、应用程序设计-功能模块组成列表
 ### 1、登录界面
-![12](https://github.com/Twinkiesma/LibrarySystem/blob/master/picture/12.jpg)
+![12](https://github.com/Twinkiesma/LibrarySystem/blob/master/picture/12.jpg)  
 ![13](https://github.com/Twinkiesma/LibrarySystem/blob/master/picture/13.jpg)
 ### 2、读者管理个人信息界面
- * a.查看个人信息
+ * a.查看个人信息  
 ![14](https://github.com/Twinkiesma/LibrarySystem/blob/master/picture/14.jpg)
- * b.修改个人信息
+
+ * b.修改个人信息  
 ![15](https://github.com/Twinkiesma/LibrarySystem/blob/master/picture/15.jpg)
- * c.修改登录密码
-![16](https://github.com/Twinkiesma/LibrarySystem/blob/master/picture/16.jpg)
+
+ * c.修改登录密码  
+![16](https://github.com/Twinkiesma/LibrarySystem/blob/master/picture/16.jpg)  
 ![17](https://github.com/Twinkiesma/LibrarySystem/blob/master/picture/17.jpg)
 ### 3、管理员管理读者界面
-a.查看全部读者信息
+a.查看全部读者信息  
 ![18](https://github.com/Twinkiesma/LibrarySystem/blob/master/picture/18.jpg)
-b.修改读者信息
+
+b.修改读者信息  
 ![19](https://github.com/Twinkiesma/LibrarySystem/blob/master/picture/19.jpg)
-c.删除读者
+
+c.删除读者  
 ![20](https://github.com/Twinkiesma/LibrarySystem/blob/master/picture/20.jpg)
-c.添加读者
+
+c.添加读者  
 ![21](https://github.com/Twinkiesma/LibrarySystem/blob/master/picture/21.jpg)
 ### 4、出错界面
 ![22](https://github.com/Twinkiesma/LibrarySystem/blob/master/picture/22.jpg)
